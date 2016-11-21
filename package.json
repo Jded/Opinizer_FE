@@ -1,0 +1,36 @@
+{
+  "name": "opinizer_fe",
+  "version": "0.1.0",
+  "description": "Opinizer FE",
+  "main": "bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jded/Opinizer_FE.git"
+  },
+  "author": "Jdedor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jded/Opinizer_FE/issues"
+  },
+  "homepage": "https://github.com/Jded/Opinizer_FE#readme",
+  "dependencies": {
+    "@types/material-ui": "^0.16.40",
+    "@types/react": "^0.14.50",
+    "@types/react-dom": "^0.14.19",
+    "@types/react-tap-event-plugin": "0.0.30",
+    "material-ui": "^0.16.4",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0"
+  },
+  "devDependencies": {
+    "material-ui": "^0.16.4",
+    "react-tap-event-plugin": "^2.0.1",
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^1.2.2",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
