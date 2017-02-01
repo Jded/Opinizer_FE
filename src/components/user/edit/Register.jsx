@@ -1,7 +1,7 @@
 import React from 'react'
 import { Subheader,TextField,Divider,Paper, FlatButton } from 'material-ui'
-import {validateEmail, validatePassword, validateLogin} from "./../../actions/helpers"
-import {changeHandler} from "./../../components/forms/inputBinder"
+import {validateEmail, validatePassword, validateLogin} from "../../../actions/helpers"
+import {changeHandler} from "../../forms-common/inputBinder"
 
 const style = {
     "maxWidth": 600,
@@ -83,8 +83,8 @@ class Register extends React.Component {
                             <Subheader>Create account</Subheader>
                             <TextField floatingLabelText="Login *" underlineShow={false} maxLength="32" fullWidth={true} {...this.changeHandler("login","loginError",null)}/>
                             <TextField floatingLabelText="Email address *" underlineShow={false} maxLength="64" fullWidth={true} {...this.changeHandler("email","emailError",null)}/>
-                            <TextField floatingLabelText="Password *" underlineShow={false} maxLength="64" fullWidth={true} {...this.changeHandler("password","passwordError",null)}/>
-                            <TextField floatingLabelText="Repeat password *" underlineShow={false} maxLength="64" fullWidth={true} {...this.changeHandler("password_repeat","password_repeatError",null)}/>
+                            <TextField floatingLabelText="Password *" type = "password" underlineShow={false} maxLength="64" fullWidth={true} {...this.changeHandler("password","passwordError",null)}/>
+                            <TextField floatingLabelText="Repeat password *" type = "password" underlineShow={false} maxLength="64" fullWidth={true} {...this.changeHandler("password_repeat","password_repeatError",null)}/>
                             <TextField floatingLabelText="First name" underlineShow={false} maxLength="64" fullWidth={true} {...this.changeHandler("first_name","first_nameError",null)}/>
                             <TextField floatingLabelText="Last name" underlineShow={false} maxLength="64" fullWidth={true} {...this.changeHandler("last_name","last_nameError",null)}/>
                             <Divider/>

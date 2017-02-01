@@ -4,7 +4,7 @@ import {createSession, deleteSession} from "./../../actions/user";
 
 
 const mapStateToProps = (state) => {
-    console.log('work',state)
+    console.log(state)
     return {
         user: state.user
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Dialog, FlatButton, TextField} from 'material-ui'
 import { Link } from 'react-router'
-import {changeHandler} from "./../forms/inputBinder"
+import {changeHandler} from "../forms-common/inputBinder"
 
 class Login extends React.Component {
 
@@ -34,6 +34,7 @@ class Login extends React.Component {
         }
         if(valid){
             this.props.doLogin(this.state.email,this.state.password);
+            this.setState((prevState, props) => Object.assign({}, prevState, {open:false}));
         }else{
             this.setState((prevState, props) => Object.assign({}, prevState, validation));
         }

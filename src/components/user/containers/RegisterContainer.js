@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Register from "./Register";
-import {doRegister} from "./../../actions/user";
+import Register from "../edit/Register";
+import {doRegister} from "../../../actions/user";
 
 
 const mapStateToProps = (state) => {

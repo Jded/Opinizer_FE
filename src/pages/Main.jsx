@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import {Paper} from 'material-ui'
 
 import HeaderContainer from "../components/header/HeaderContainer";
-import Footer from "./../components/Footer";
+import FooterContainer from "../components/footer/FooterContainer";
 
 
 const style = {
@@ -19,7 +19,7 @@ class Main extends React.Component {
                 <Paper zDepth={1} style={style}>
                     {this.props.children}
                 </Paper>
-                <Footer/>
+                <FooterContainer/>
             </div>
         )
     }

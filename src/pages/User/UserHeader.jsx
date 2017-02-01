@@ -4,7 +4,7 @@ import { Router, Route, Link } from 'react-router'
 class UserHeader extends React.Component {
     render() {
         return (
-            <div> Item header
+            <div> User area
                 {this.props.children}
             </div>
         )
