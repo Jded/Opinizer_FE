@@ -1,10 +1,13 @@
 import React from 'react'
-import { Router, Route, Link } from 'react-router'
+import {Subheader} from "material-ui"
+import CategoryNewContainer from './../../components/categories/containers/CategoryNewContainer'
 
 class CategoryNew extends React.Component {
     render() {
         return (
-            <div> New category
+            <div>
+                <Subheader>Add new category</Subheader>
+                <CategoryNewContainer/>
             </div>
         )
     }

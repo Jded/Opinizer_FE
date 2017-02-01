@@ -1,10 +1,13 @@
 import React from 'react'
-import { Router, Route, Link } from 'react-router'
+import SingleCategoryViewContainer from "./../../components/categories/containers/SingleCategoryViewContainer"
+import {Subheader} from "material-ui"
 
 class CategoryView extends React.Component {
     render() {
         return (
-            <div>View category {this.props.params.categoryId}
+            <div>
+                <Subheader>View category</Subheader>
+                <SingleCategoryViewContainer/>
             </div>
         )
     }

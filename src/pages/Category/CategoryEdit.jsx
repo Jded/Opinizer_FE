@@ -1,11 +1,13 @@
 import React from 'react'
-import { Router, Route, Link } from 'react-router'
+import {Subheader} from "material-ui";
+import CategoryEditContainer from "./../../components/categories/containers/CategoryEditContainer"
 
 class CategoryEdit extends React.Component {
     render() {
         return (
             <div>
-                Edit category {this.props.params.categoryId}
+                <Subheader>Edit category</Subheader>
+                <CategoryEditContainer/>
             </div>
         )
     }

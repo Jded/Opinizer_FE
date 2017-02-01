@@ -1,11 +1,13 @@
 import React from 'react'
-import { Router, Route, Link } from 'react-router'
+import {Subheader} from 'material-ui'
+import AllCategoryContainer from "./../../components/categories/containers/AllCategoryContainer"
 
 class CategoriesList extends React.Component {
     render() {
         return (
             <div>
-                CategoriesList
+                <Subheader>All categories</Subheader>
+                <AllCategoryContainer/>
             </div>
         )
     }
