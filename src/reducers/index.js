@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
 import user from './user'
-import error from './error'
+import message from './message'
+import category from './category'
 //import visibilityFilter from './visibilityFilter'
 
 const reduceDefault = combineReducers({
     user,
-    error
+    message,
+    category
 })
 
 export default reduceDefault

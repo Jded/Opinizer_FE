@@ -1,4 +1,5 @@
-import {BE_ADDR, ADD_ERROR} from "./../constants.js";
+import {BE_ADDR} from "./../constants.js";
+import {ADD_MESSAGE} from "./message";
 import {parseJsonResponse} from "./helpers.js";
 export const LOGIN_USER = 'LOGIN_USER';
 
@@ -40,7 +41,7 @@ function logoutSuccess(){
 }
 function logoutFailure(error){
     return {
-        type: ADD_ERROR,
+        type: ADD_MESSAGE,
         error:true,
         payload:error
     }
@@ -66,6 +67,56 @@ function registrationSuccess(userId) {
 function registrationFailure(error) {
     return {
         type: REGISTER_USER_REPLY,
+        error:true,
+        payload:error
+    }
+}
+
+export const UPDATE_USER = 'UPDATE_USER';
+
+function userUpdateStart() {
+    return {
+        type: UPDATE_USER
+    }
+}
+
+export const UPDATE_USER_REPLY = 'UPDATE_USER_REPLY';
+
+function userUpdateSuccess(data) {
+    return {
+        type: UPDATE_USER_REPLY,
+        payload:data
+    }
+}
+
+function userUpdateFailure(error) {
+    return {
+        type: UPDATE_USER_REPLY,
+        error:true,
+        payload:error
+    }
+}
+
+export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+
+function passwordUpdateStart() {
+    return {
+        type: UPDATE_PASSWORD
+    }
+}
+
+export const UPDATE_PASSWORD_REPLY = 'UPDATE_PASSWORD_REPLY';
+
+function passwordUpdateSuccess() {
+    return {
+        type: UPDATE_PASSWORD_REPLY,
+        payload:null
+    }
+}
+
+function passwordUpdateFailure(error) {
+    return {
+        type: UPDATE_PASSWORD_REPLY,
         error:true,
         payload:error
     }
@@ -138,6 +189,75 @@ export function doRegister(userData) {
                 dispatch(registrationSuccess(json))
             ).catch(error=>
                 dispatch(registrationFailure(error))
+            )
+    }
+}
+
+export function doSaveData(userData){
+    return function (dispatch) {
+        dispatch(userUpdateStart)
+
+        const payload = JSON.stringify(userData)
+        const options = {
+            method: 'PUT',
+            body: payload,
+            credentials: 'include'
+        };
+        return fetch(BE_ADDR + "/user/"+userData.user_id,options)
+            .then(parseJsonResponse)
+            .then(json =>
+                dispatch(userUpdateSuccess(json))
+            ).catch(error=>
+                dispatch(userUpdateFailure(error))
+            )
+    }
+}
+
+export function doSaveAvatar(userData,file){
+    return function (dispatch) {
+        dispatch(userUpdateStart)
+
+        const data = new FormData()
+        data.append('file', file)
+
+        return fetch(BE_ADDR + '/file', {
+            method: 'POST',
+            body: data,
+            credentials: 'include'
+        }).then(parseJsonResponse).then(json => {
+            userData.file_id = json.file_id;
+            const payload = JSON.stringify(userData)
+            const options = {
+                method: 'PUT',
+                body: payload,
+                credentials: 'include'
+            };
+            return fetch(BE_ADDR + "/user/"+userData.user_id,options)
+                .then(parseJsonResponse)
+                .then(json =>
+                    dispatch(userUpdateSuccess(json))
+                ).catch(error=>
+                    dispatch(userUpdateFailure(error))
+                )
+        })
+    }
+}
+
+export function doUpdatePassword(userData,oldPassword,newPassword){
+    return function (dispatch) {
+        dispatch(passwordUpdateStart)
+        const payload = JSON.stringify({oldPassword,newPassword})
+        const options = {
+            method: 'PUT',
+            body: payload,
+            credentials: 'include'
+        };
+        return fetch(BE_ADDR + `/user/${userData.user_id}/change-password`,options)
+            .then(parseJsonResponse)
+            .then(json =>
+                dispatch(passwordUpdateSuccess())
+            ).catch(error=>
+                dispatch(passwordUpdateFailure(error))
             )
     }
 }
